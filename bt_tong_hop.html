@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <style>
+        .Menu{
+            border: solid black;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+<div class="Menu">
+    <label for='num'> <b> &nbsp; Kiểm tra số lẻ dương </b> <br> <br> </label><input type="text" id = 'num'>
+    <button onclick="check ()">Kiểm tra</button>
+    <p id = 'Integer'></p>
+</div>
+<div class="Menu">
+    <label for='num1'>  <b> &nbsp; Kiểm tra số nguyên tố </b> <br> <br> </label><input type="text" id = 'num1'>
+    <button onclick=" check1() ">Kiểm tra</button>
+    <p id ='prime'></p>
+</div>
+<div class="Menu">
+    <label><b> &nbsp; Hiển thị danh sách số nguyên tố đầu tiên</b> <br> <br> </label><input type="text" id="num2" >
+    <button onclick=" check2()"> Kiểm tra</button>
+    <p id ='list'></p>
+</div>
+<div class="Menu">
+    <label><b> &nbsp; Nhập phần tử vào mảng</b> <br> <br> </label><input type="text" id="nums" >
+    <button onclick="addToArr()">  Add  </button>
+    <p id="array"></p>
+</div>
+<script>
+    function check()
+    {
+        let N = document.getElementById('num').value;
+        if (N%2>0){
+            document.getElementById('Integer').innerHTML ='&nbsp;' + N + ': là số lẻ dương'
+        }else
+            document.getElementById('Integer').innerHTML = '&nbsp;' + N + ': ko phải là số lẻ dương'
+    }
+    //bài 2
+    function check1() {
+        let number = +document.getElementById('num1').value;
+        let i = 2;
+        if (number < 2) {
+            document.getElementById('prime').innerHTML = "&nbsp;" + number + ': không là số ngyên tố';
+            return;
+        }
+        while (i < number) {
+            if (number % i === 0){
+                document.getElementById('prime').innerHTML = "&nbsp;" + number + ': Không là số nguyên tố';
+                return ;
+            }i++;
+        }document.getElementById('prime').innerHTML = "&nbsp;" + number + ': Là số nguyên tố';
+    }
+    //bài 3
+    function check2() {
+        let N = +document.getElementById('num2').value;
+        function checkPrime(number) {
+            if (number < 2) return false;
+            if (number === 2) return true;
+            if (number % 2 == 0) return false;
+            for (let i = 2; i * i <= number; i++) {
+                if (number % i == 0) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        let prime= []
+        let count = 0;
+        let i = 0;
+        while (count < N) {
+            if (checkPrime(i)) {
+                document.write(i + "\n");
+                count++;
+            }
+            i++;
+        }
+
+    }
+    //bài 4
+    let arr = [];
+    function addToArr(){
+        let value = +document.getElementById("nums").value;
+        arr.push(value);
+        document.getElementById("nums").value = "";
+        document.getElementById('array').innerHTML = arr
+    }
+</script>
+
+</body>
+</html>
