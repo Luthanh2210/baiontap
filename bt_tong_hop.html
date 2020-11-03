@@ -9,6 +9,9 @@
             width: fit-content;
         }
     </style>
+    <script type="text/javascript">
+        
+    </script>
 </head>
 <body>
 <div class="Menu">
@@ -24,7 +27,9 @@
 <div class="Menu">
     <label><b> &nbsp; Hiển thị danh sách số nguyên tố đầu tiên</b> <br> <br> </label><input type="text" id="num2" >
     <button onclick=" check2()"> Kiểm tra</button>
-    <p id ='list'></p>
+    <p id ='list'>
+
+    </p>
 </div>
 <div class="Menu">
     <label><b> &nbsp; Nhập phần tử vào mảng</b> <br> <br> </label><input type="text" id="nums" >
@@ -69,12 +74,11 @@
             }
             return true;
         }
-        let prime= []
         let count = 0;
         let i = 0;
         while (count < N) {
             if (checkPrime(i)) {
-                document.write(i + "\n");
+                document.getElementById("list").innerHTML += [i+","];
                 count++;
             }
             i++;
